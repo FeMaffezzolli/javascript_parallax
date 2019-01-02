@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <section>
+        <ul>
+            <li class="scroll" data-rateX="0.8" data-direction="1">pa</li>
+            <li class="scroll" data-rateX="1.0" data-direction="1">ral</li>
+            <li class="scroll" data-rateX="1.2" data-direction="1">lax</li>
+        </ul>
+    </section>
+    <span class="circle"></span>
+    <section></section>
+
+    <script>
+
+
+        window.addEventListener('scroll', function(e) {
+
+            const target = document.querySelectorAll(".scroll")
+            const circle = document.querySelector(".circle");
+            var scrolled = window.pageYOffset;
+
+            for (i = 0; i < target.length; i++) {
+                var t = target[i]
+                var rate = scrolled * t.dataset.ratex * t.dataset.direction;
+                t.style.transform = 'translate3d(0px, '+rate+'px, 0px)';
+            };
+
+            var perc = 100*(scrolled / 696);
+            circle.style.width=""+perc+"%";
+            circle.style.transform = 'translate3d(0px, '+scrolled+'px, 0px)';
+
+        });
+
+    </script>
+
+</body>
+</html>
